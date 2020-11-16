@@ -37,3 +37,24 @@ $ ./revme a b c
 
 This could be a hint that there are chars that are allowed to be entered, and others that are not. We will see this later.
 By adding more parameters, the program prints the same information message given for 0 arguments (see above).
+
+## Reversing
+### Basic methods
+
+Running `strings revme` spits out the human-readable strings contained in the file.
+The result is a long list of strings, the majority of which are internally used by the executable to run properly. Nevertheless some lines pop out:
+
+```
+u+UH
+[]A\A]A^A_
+Usage ./revme key
+Wrong charachter %c in input!
+Where the fuck u going?
+:*3$"
+biglabbiglabicbigczzpcmigzxqmnbyglmglababbdhbahlazqxllhaabyabmasrydbagzbbmatbiglalzbipbvibbzcpgigcgvbiiclymglmlqmnqqlealamaaeabibigabiglabbiglab
+```
+
+We already saw some of these strings while trying to run the program blindly in the "First Look" section.
+There is also a pretty long string that looks meaningless but contains "biglab", so it may be worth some attention for the reversing process.
+
+Trying to input each of these strings as the first argument of the program does not give any useful result. We shall proceed with the big guns.
